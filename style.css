@@ -1,0 +1,405 @@
+* {
+	font-family: 'Roboto', sans-serif;
+}
+body {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.body-container {
+	background: #dfd9d9;
+	margin-top: -15px;
+	height: 1100px;
+}
+/*title*/
+.headline {
+	position: relative;
+	color: #857f7d;
+	font-size: 35px;
+	text-align: center;
+}
+.title-container {
+	font-size: 35px;
+	color: #474645;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 110px;
+}
+
+.isTrue::after {
+	content: ' \f00c';
+	font-family: FontAwesome;
+	color: green;
+}
+
+.sections-title {
+	font-size: 30px;
+	color: #474645;
+	margin-top: -55px;
+}
+
+.sections-title.how {
+	margin-top: 0;
+}
+
+.sections-title.and {
+	position: absolute;
+	top: 321%;
+}
+
+.sections-title.req {
+	position: absolute;
+	top: 21%;
+}
+
+.status,
+.interval,
+.currency {
+	display: none;
+}
+.amount::after {
+	content: ' GPB';
+}
+
+h2 {
+	color: #f33ce6;
+}
+p {
+	font-size: 20px;
+	color: #403f3e;
+	font-weight: bold;
+}
+
+.locations {
+	font-size: 24px;
+	width: 300px;
+	color: #87807e;
+	position: absolute;
+	top: 8%;
+	left: 42%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	/*border: solid yellow 3px;*/
+	text-align: center;
+}
+
+.locations::after {
+	content: ' \f041';
+	font-family: FontAwesome;
+	position: absolute;
+	top: 28%;
+	left: 56%;
+	color: #968e8e;
+}
+
+.locations::before {
+	position: absolute;
+	content: ' \f041';
+	font-family: FontAwesome;
+	top: 28%;
+	left: 9%;
+	color: #968e8e;
+}
+
+div {
+	margin-left: 10px;
+}
+
+li {
+	text-align: center;
+	list-style-type: none;
+}
+
+.essentials > h2 {
+	visibility: hidden;
+}
+
+.essentials {
+	width: 250px;
+	position: absolute;
+	top: 20%;
+	left: 1%;
+	height: 147px;
+	line-height: 40%;
+}
+
+.essentials p {
+	color: #444241;
+}
+
+.salary > h2::after {
+	content: ' \f0d6';
+	font-family: FontAwesome;
+}
+
+.salary {
+	position: absolute;
+	left: 32%;
+	top: 66%;
+}
+
+.salary > p {
+	line-height: 50%;
+}
+
+.methodology {
+	/*border: solid black 2px;*/
+	line-height: 75%;
+	position: absolute;
+	left: 80%;
+	top: 66%;
+}
+
+.methodology > h2::after {
+	content: ' \f0b1';
+	font-family: FontAwesome;
+}
+
+/*-------Technologies------------*/
+#requirements {
+	font-size: 28px;
+	border: solid #6d6666 2px;
+	height: 285px;
+	width: 631px;
+	padding: 7px;
+	position: absolute;
+	left: 32%;
+	top: 23%;
+}
+
+.allSections {
+	color: #7b7776;
+}
+
+.technologies,
+.oneof,
+.oneof1,
+.oneof2 {
+	display: none;
+}
+
+.expert-container,
+.good-container,
+.familiar-container {
+	display: flex;
+	font-size: 20px;
+	color: #403f3e;
+	/*margin-top: -120px;
+    margin-left: 2px;*/
+	font-weight: bold;
+}
+
+.node,
+.selenium,
+.cpp {
+	visibility: hidden;
+}
+.node::before {
+	visibility: visible;
+	content: 'Node';
+}
+.selenium::before {
+	visibility: visible;
+	content: 'Selenium';
+}
+.cpp::before {
+	visibility: visible;
+	content: 'Cpp';
+}
+
+.expert-container {
+	margin-top: -188px;
+	margin-left: 2px;
+}
+
+.good-container {
+	margin-top: 6px;
+	margin-left: 2px;
+}
+
+.familiar-container {
+	flex-wrap: wrap;
+	line-height: 0;
+	font-size: 20px;
+	margin-top: 19px;
+	margin-left: 2px;
+	width: 580px;
+	height: 81px;
+	/*border: solid red 2px;*/
+}
+
+/*-----------------------------*/
+
+/*companyspec------------------*/
+#companyspecs {
+	/*border:solid red 3px;*/
+	width: 500px;
+	position: absolute;
+	left: 32%;
+	top: 64%;
+}
+
+.equipment {
+	/*position: absolute;
+    left:10%;
+    top:50%;*/
+}
+
+.operatingsystem {
+	position: absolute;
+	left: 33%;
+	top: 60%;
+	color: #403f3e;
+	font-weight: bold;
+	visibility: hidden;
+}
+
+.specs,
+.corehours,
+.profile p {
+	line-height: 40%;
+}
+
+.profile {
+	position: absolute;
+	top: 74%;
+}
+.corehours {
+	position: absolute;
+	top: 64%;
+}
+
+.specs {
+	position: absolute;
+	top: 108%;
+	left: 32%;
+}
+
+.specs h2{
+    padding-bottom: 10px;
+}
+
+.equipment {
+	visibility: hidden;
+	left: 33%;
+	top: 59%;
+	color: #403f3e;
+	font-weight: bold;
+	display: flex;
+	align-items: baseline;
+}
+
+.misc {
+	line-height: 40%;
+	/*border: solid black 2px;*/
+	position: absolute;
+	left: 32%;
+	top: 81%;
+}
+.misc h2 {
+	display: none;
+}
+
+.freestuff {
+	width: 150px;
+	position: absolute;
+	left: 50%;
+	top: 68%;
+	line-height: 40%;
+}
+
+#freestuff {
+	position: absolute;
+	left: 58%;
+	top: 12%;
+}
+
+#other {
+	position: absolute;
+	left: 58%;
+	top: 309%;
+}
+
+.other {
+	position: absolute;
+	left: 50%;
+	top: 90%;
+	line-height: 40%;
+}
+
+#freestuff::after {
+	content: ' \f0f4';
+	font-family: FontAwesome;
+}
+
+.teamsize {
+	position: absolute;
+	left: 8px;
+	top: 109%;
+	width: 100px;
+	line-height: 40%;
+}
+
+.teamsize h2::after {
+	position: absolute;
+	left: 110%;
+	top: 21%;
+	content: ' \f0c0';
+	font-family: FontAwesome;
+}
+
+/*-----------------------------*/
+
+.conferences {
+	position: absolute;
+	top: 98%;
+	left: 20px;
+	line-height: 40%;
+}
+
+.sections {
+	text-align: center;
+}
+
+.from {
+	visibility: hidden;
+}
+.from::before {
+	content: 'From 11:00';
+	visibility: visible;
+}
+
+.to {
+	visibility: hidden;
+}
+.to::before {
+	content: 'To 17:00';
+	visibility: visible;
+}
+.relocationpackage {
+	visibility: hidden;
+}
+.relocationpackage::before {
+	content: 'Relocation Package: Negotiable';
+	visibility: visible;
+}
+
+.newfeatures {
+	visibility: hidden;
+}
+
+.newfeatures::before {
+	content: 'New feautures: 70';
+	visibility: visible;
+}
+
+.clientsupport {
+	visibility: hidden;
+}
+
+.clientsupport::before {
+	content: 'Client support: 20';
+	visibility: visible;
+}
