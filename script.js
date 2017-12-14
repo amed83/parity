@@ -1,3 +1,6 @@
+
+
+
 var job = {
 	headline: 'Javascript wizard with good sense of design',
 	essentials: {
@@ -113,172 +116,6 @@ var job = {
 	}
 };
 
-function buildPage(obj) {
-	let titleContainer = document.createElement('div');
-	titleContainer.classList.add('title-container');
-	let title = document.createTextNode(job.headline);
-	titleContainer.appendChild(title);
-	document.body.appendChild(titleContainer);
-	let bodyContainer = document.createElement('div');
-	let requirements = document.getElementById('requirements');
-	let companySpecs = document.getElementById('companyspecs');
-
-	bodyContainer.appendChild(requirements);
-	bodyContainer.appendChild(companySpecs);
-	bodyContainer.classList.add('body-container');
-
-	let readableDate = job.essentials.startdate;
-	let expContainer = document.createElement('div');
-	let goodContainer = document.createElement('div');
-	let familiarContainer = document.createElement('div');
-	expContainer.classList.add('expert-container');
-	goodContainer.classList.add('good-container');
-	familiarContainer.classList.add('familiar-container');
-
-	var date = new Date().getTime();
-	var newdate = new Date(date);
-
-	var newdate =
-		newdate.getDay() +
-		'/' +
-		newdate.getMonth() +
-		'/' +
-		newdate.getFullYear();
-
-	function checkObj(obj) {
-		for (let props in obj) {
-			if (Array.isArray(obj[props])) {
-				let newText, text;
-				newText = document.createElement('p');
-
-				if (
-					props === 'locations' ||
-					props === 'freestuff' ||
-					props === 'other'
-				) {
-					text = document.createTextNode('');
-				} else if (props === 'conferences') {
-					text = document.createTextNode('Conferences');
-				} else {
-					text = document.createTextNode(props);
-				}
-				newText.appendChild(text);
-				newText.classList.add(props);
-
-				obj[props].forEach(el => {
-					var newNode = document.createElement('p');
-					var nodeText = document.createTextNode(
-						el.charAt(0).toUpperCase() + el.slice(1)
-					);
-					newNode.appendChild(nodeText);
-					newText.appendChild(newNode);
-					bodyContainer.appendChild(newText);
-					document.body.appendChild(bodyContainer);
-				});
-			} else if (typeof obj[props] === 'object') {
-				var newSection = document.createElement('h2');
-				if (
-					props === 'oneof' ||
-					props === 'oneof1' ||
-					props === 'oneof2'
-				) {
-					var text = document.createTextNode('One of');
-				} else {
-					var text = document.createTextNode(
-						props.charAt(0).toUpperCase() + props.slice(1)
-					);
-				}
-
-				newSection.appendChild(text);
-				var sectionsContainer = document.createElement('div');
-
-				sectionsContainer.classList.add(props);
-				sectionsContainer.appendChild(newSection);
-
-				for (let props2 in obj[props]) {
-					var insideObj = obj[props][props2];
-					if (typeof insideObj !== 'object') {
-						let newContent = document.createElement('p');
-						let contentText = document.createTextNode(insideObj);
-						let title = document.createTextNode(
-							props2.charAt(0).toUpperCase() +
-								props2.slice(1) +
-								': '
-						);
-						switch (props2) {
-							case 'startdate':
-								contentText = document.createTextNode(newdate);
-								newContent.appendChild(contentText);
-								console.log(props2, newContent);
-								break;
-							case 'companysize':
-								let size = '1-10';
-								contentText = document.createTextNode(size);
-								break;
-							default:
-						}
-
-						switch (insideObj) {
-							case true:
-								contentText = document.createTextNode('');
-								newContent.appendChild(contentText);
-								newContent.classList.add('isTrue');
-								break;
-							case false:
-								contentText = document.createTextNode('\u2718');
-								newContent.appendChild(contentText);
-								break;
-							case 'Expert':
-							case 'Good':
-							case 'Familiar':
-								newContent.classList.add(insideObj);
-								break;
-							default:
-								newContent.appendChild(contentText);
-						}
-
-						newContent.appendChild(title);
-						newContent.appendChild(contentText);
-						newContent.classList.add(props2);
-						sectionsContainer.appendChild(newContent);
-						bodyContainer.appendChild(sectionsContainer);
-						document.body.appendChild(bodyContainer);
-
-						//Build requirements section
-
-						function createRequirementList(container) {
-							let skillToAdd = document.createElement('p');
-							skillToAdd.classList.add(props2);
-							let skill = document.createTextNode(
-								props2.charAt(0).toUpperCase() +
-									props2.slice(1) +
-									','
-							);
-
-							skillToAdd.appendChild(skill);
-							container.appendChild(skillToAdd);
-							requirements.appendChild(container);
-						}
-
-						if (newContent.classList.contains('Expert')) {
-							createRequirementList(expContainer);
-						} else if (newContent.classList.contains('Good')) {
-							createRequirementList(goodContainer);
-						} else if (newContent.classList.contains('Familiar')) {
-							createRequirementList(familiarContainer);
-						}
-					}
-				}
-
-				checkObj(obj[props]); //iterate through nested objects
-			}
-		}
-	}
-	checkObj(obj);
-}
-
-buildPage(job);
-
 function EmploymentType() {
 	return enumerate('Permanent', 'Temporary', 'Project');
 }
@@ -351,3 +188,170 @@ function enumerate() {
 	for (i = v.length; i--; ) s[v[i]] = s.all[i] = v[i];
 	return s;
 }
+
+/* ----------------------------------------------------------------*/
+function buildPage(obj) {
+   let titleContainer = document.createElement('div');
+   titleContainer.classList.add('title-container');
+   let title = document.createTextNode(job.headline);
+   titleContainer.appendChild(title);
+   document.body.appendChild(titleContainer);
+   let bodyContainer = document.createElement('div');
+   let requirements = document.getElementById('requirements');
+   let companySpecs = document.getElementById('companyspecs');
+
+   bodyContainer.appendChild(requirements);
+   bodyContainer.appendChild(companySpecs);
+   bodyContainer.classList.add('body-container');
+
+   let readableDate = job.essentials.startdate;
+   let expContainer = document.createElement('div');
+   let goodContainer = document.createElement('div');
+   let familiarContainer = document.createElement('div');
+   expContainer.classList.add('expert-container');
+   goodContainer.classList.add('good-container');
+   familiarContainer.classList.add('familiar-container');
+
+   var date = new Date().getTime();
+   var newdate = new Date(date);
+
+   var newdate =
+	   newdate.getDay() +
+	   '/' +
+	   newdate.getMonth() +
+	   '/' +
+	   newdate.getFullYear();
+
+   function checkObj(obj) {
+	   for (let props in obj) {
+		   if (Array.isArray(obj[props])) {
+			   let newText, text;
+			   newText = document.createElement('p');
+
+			   if (
+				   props === 'locations' ||
+				   props === 'freestuff' ||
+				   props === 'other'
+			   ) {
+				   text = document.createTextNode('');
+			   } else if (props === 'conferences') {
+				   text = document.createTextNode('Conferences');
+			   } else {
+				   text = document.createTextNode(props);
+			   }
+			   newText.appendChild(text);
+			   newText.classList.add(props);
+
+			   obj[props].forEach(el => {
+				   var newNode = document.createElement('p');
+				   var nodeText = document.createTextNode(
+					   el.charAt(0).toUpperCase() + el.slice(1)
+				   );
+				   newNode.appendChild(nodeText);
+				   newText.appendChild(newNode);
+				   bodyContainer.appendChild(newText);
+				   document.body.appendChild(bodyContainer);
+			   });
+		   } else if (typeof obj[props] === 'object') {
+			   var newSection = document.createElement('h2');
+			   if (
+				   props === 'oneof' ||
+				   props === 'oneof1' ||
+				   props === 'oneof2'
+			   ) {
+				   var text = document.createTextNode('One of');
+			   } else {
+				   var text = document.createTextNode(
+					   props.charAt(0).toUpperCase() + props.slice(1)
+				   );
+			   }
+
+			   newSection.appendChild(text);
+			   var sectionsContainer = document.createElement('div');
+
+			   sectionsContainer.classList.add(props);
+			   sectionsContainer.appendChild(newSection);
+
+			   for (let props2 in obj[props]) {
+				   var insideObj = obj[props][props2];
+				   if (typeof insideObj !== 'object') {
+					   let newContent = document.createElement('p');
+					   let contentText = document.createTextNode(insideObj);
+					   let title = document.createTextNode(
+						   props2.charAt(0).toUpperCase() +
+							   props2.slice(1) +
+							   ': '
+					   );
+					   switch (props2) {
+						   case 'startdate':
+							   contentText = document.createTextNode(newdate);
+							   newContent.appendChild(contentText);
+							   console.log(props2, newContent);
+							   break;
+						   case 'companysize':
+							   let size = '1-10';
+							   contentText = document.createTextNode(size);
+							   break;
+						   default:
+					   }
+
+					   switch (insideObj) {
+						   case true:
+							   contentText = document.createTextNode('');
+							   newContent.appendChild(contentText);
+							   newContent.classList.add('isTrue');
+							   break;
+						   case false:
+							   contentText = document.createTextNode('\u2718');
+							   newContent.appendChild(contentText);
+							   break;
+						   case 'Expert':
+						   case 'Good':
+						   case 'Familiar':
+							   newContent.classList.add(insideObj);
+							   break;
+						   default:
+							   newContent.appendChild(contentText);
+					   }
+
+					   newContent.appendChild(title);
+					   newContent.appendChild(contentText);
+					   newContent.classList.add(props2);
+					   sectionsContainer.appendChild(newContent);
+					   bodyContainer.appendChild(sectionsContainer);
+					   document.body.appendChild(bodyContainer);
+
+					   //Build requirements section
+
+					   function createRequirementList(container) {
+						   let skillToAdd = document.createElement('p');
+						   skillToAdd.classList.add(props2);
+						   let skill = document.createTextNode(
+							   props2.charAt(0).toUpperCase() +
+								   props2.slice(1) +
+								   ','
+						   );
+
+						   skillToAdd.appendChild(skill);
+						   container.appendChild(skillToAdd);
+						   requirements.appendChild(container);
+					   }
+
+					   if (newContent.classList.contains('Expert')) {
+						   createRequirementList(expContainer);
+					   } else if (newContent.classList.contains('Good')) {
+						   createRequirementList(goodContainer);
+					   } else if (newContent.classList.contains('Familiar')) {
+						   createRequirementList(familiarContainer);
+					   }
+				   }
+			   }
+
+			   checkObj(obj[props]); //iterate through nested objects
+		   }
+	   }
+   }
+   checkObj(obj);
+}
+
+buildPage(job);
